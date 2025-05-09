@@ -1,5 +1,5 @@
 <?php 
-required_one('config.php');
+require_once('config.php');
 ?>
 <!-- Include Stripe.js -->
  <!DOCTYPE html>
@@ -9,13 +9,20 @@ required_one('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        html, body, button {
+            width:100%;
+        }
+    </style>
  </head>
  <body>
 
 <button id="payment-request-button">Loading...</button>
 
 <script>
-  const stripe = Stripe(STRIPE_PUBLISH);
+    const STRIPE_PUBLISH = "<?php echo STRIPE_PUBLISH; ?>";
+    console.log(`STRIPE_PUBLISH ${STRIPE_PUBLISH}`)
+    const stripe = Stripe(STRIPE_PUBLISH);
 
   const paymentRequest = stripe.paymentRequest({
     country: 'US',
