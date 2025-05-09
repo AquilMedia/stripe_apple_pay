@@ -16,6 +16,9 @@ try {
         'payment_method' => $input['payment_method_id'],
         'confirmation_method' => 'manual',
         'confirm' => true,
+        'automatic_payment_methods' => [
+            'enabled' => 'true',
+        ],
     ]);
 
     // Check if further action is needed (e.g., 3D Secure)
